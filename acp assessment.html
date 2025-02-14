@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Show Shapes on Button Click</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        .button-container {
+            margin-bottom: 20px;
+        }
+        .rect-button, .color-button {
+            padding: 15px 30px;
+            margin: 10px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .rect-button {
+            background-color: lightblue;
+        }
+        .color-button {
+            color: white;
+        }
+        .red { background-color: red; }
+        .green { background-color: green; }
+        .blue { background-color: blue; }
+        canvas {
+            border: 1px solid black;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="button-container">
+        <button class="rect-button" onclick="drawShape('rectangle')">Rectangle</button>
+        <button class="rect-button" onclick="drawShape('circle')">Circle</button>
+    </div>
+    
+    <div id="output">Select what you want to draw</div>
+    <canvas id="mycanvas" width="400" height="400"></canvas>
+
+    <div class="button-container">
+        <button class="color-button red" onclick="changeColor('red')">Red</button>
+        <button class="color-button green" onclick="changeColor('green')">Green</button>
+        <button class="color-button blue" onclick="changeColor('blue')">Blue</button>
+    </div>
+
+    <script>
+        var canvas = document.getElementById("mycanvas");
+        var ctx = canvas.getContext("2d");
+        var currentShape = null;
+        var currentColor = "purple";
+
+        function drawShape(shape) {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            currentShape = shape;
+
+            if (shape === 'rectangle') {
+                ctx.fillStyle = currentColor;
+                ctx.fillRect(110, 10, 150, 100);
+                document.getElementById('output').innerText = "You selected a Rectangle.";
+            } else if (shape === 'circle') {
+                ctx.beginPath();
+                ctx.arc(190, 200, 50, 0, Math.PI * 2);
+                ctx.fillStyle = currentColor;
+                ctx.fill();
+                ctx.stroke();
+                document.getElementById('output').innerText = "You selected a Circle.";
+            }
+        }
+
+        function changeColor(color) {
+            if (currentShape) {
+                currentColor = color;
+                drawShape(currentShape);
+            } else {
+                document.getElementById('output').innerText = "Select a shape first!";
+            }
+        }
+    </script>
+</body>
+</html>
