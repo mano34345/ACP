@@ -38,7 +38,7 @@ This is a beginner-friendly web project that lets users draw shapes on a canvas 
 
 **Created by:** Iman Arshad  
 📧 Email: imanarshad247@gmail.com  
-🔗 GitHub: [imanarshad](https://github.com/imanarshad)
+🔗 GitHub: [imanarshad](https://github.com/mano34345?tab=overview&from=2025-07-01&to=2025-07-31)
 
 ---
 
